@@ -25,12 +25,19 @@ fun randomNumber () {
 
 fun askOption (options: String) {
     // https://beginnersbook.com/2018/09/kotlin-input-from-user/
-    print("Wich option?")
+    print("Wich option? ")
     var answer = readLine()
     if(answer == options)  {
-        println("You won")
-    } else {
-        println("Sorry. Wrong answer")
+        println("It's a draw")
+        return
     }
 
+    val winMessage = "You've won"
+    val loseMessage = "You've lost"
+
+    when(options) {
+        "rock" -> if(answer == "paper") println(winMessage) else println(loseMessage)
+        "paper" -> if(answer == "scissors") println(winMessage) else println(loseMessage)
+        "scissors" -> if(answer == "rock") println(winMessage) else println(loseMessage)
+    }
 }
