@@ -27,6 +27,13 @@ fun askOption (options: String) {
     // https://beginnersbook.com/2018/09/kotlin-input-from-user/
     print("Wich option? ")
     var answer = readLine()
+
+    validate(answer, options)
+
+}
+
+// String mag niet null zijn maar String? wel leeg zijn
+fun validate(answer: String?, options: String) {
     if(answer == options)  {
         println("It's a draw")
         return
