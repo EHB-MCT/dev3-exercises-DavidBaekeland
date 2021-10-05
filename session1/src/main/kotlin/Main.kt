@@ -27,7 +27,6 @@ fun askOption (options: String) {
     // https://beginnersbook.com/2018/09/kotlin-input-from-user/
     print("Wich option? ")
     var answer = readLine()
-
     validate(answer, options)
 
 }
