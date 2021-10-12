@@ -14,10 +14,31 @@ fun challengeOne() {
     answer = answer.capitalize()
 
    if(name.contains(answer)) {
-       success()
+       challengeTwo()
    } else {
        gameOver()
    }
+}
+
+// https://stackoverflow.com/questions/45685026/how-can-i-get-a-random-number-in-kotlin
+fun challengeTwo() {
+    val random = (1..6).random()
+    println(random)
+
+    print("Is the following number low or high? ")
+
+    val answer = readLine()
+
+    // random <= 3 || random >=4
+    if((1..3).contains(random) && answer == "low") {
+        success()
+    } else if ((4..6).contains(random) && answer == "high")  {
+        success()
+    } else {
+        gameOver()
+    }
+
+
 }
 
 fun gameOver() {
@@ -25,5 +46,5 @@ fun gameOver() {
 }
 
 fun success() {
-    println("It works")
+    println("You won")
 }
