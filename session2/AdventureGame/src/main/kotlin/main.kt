@@ -31,13 +31,28 @@ fun challengeTwo() {
 
     // random <= 3 || random >=4
     if((1..3).contains(random) && answer == "low") {
-        success()
+        challengeThree()
     } else if ((4..6).contains(random) && answer == "high")  {
-        success()
+        challengeThree()
     } else {
         gameOver()
     }
 
+
+}
+
+
+// https://kotlinlang.org/docs/collection-elements.html#retrieve-by-position
+fun challengeThree() {
+    val answer = readLine().toString()
+
+    if(answer == "chairs") {
+        success()
+    } else if(answer == "milkshake") {
+        challengeTwo()
+    } else if(answer ==  "coffee"){
+        gameOver()
+    }
 
 }
 
