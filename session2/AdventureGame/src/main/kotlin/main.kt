@@ -44,6 +44,7 @@ fun challengeTwo() {
 
 // https://kotlinlang.org/docs/collection-elements.html#retrieve-by-position
 fun challengeThree() {
+    print("What is better? chairs, milkshake or coffee? ")
     val answer = readLine().toString()
 
     if(answer == "chairs") {
