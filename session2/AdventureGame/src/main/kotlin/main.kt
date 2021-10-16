@@ -62,9 +62,20 @@ fun challengeFour() {
     val awards = 64
     print("How many awards did Friends won?  ")
     var answer = readLine()!!.toInt()
+    validate(awards, answer)
 }
 
-
+fun validate(awards:Int, answer:Int) {
+    if(answer < awards) {
+        println("It is higher")
+        challengeFour()
+    } else if( answer > awards)  {
+        println("It is lower")
+        challengeFour()
+    } else {
+        success()
+    }
+}
 
 fun gameOver() {
     println("Wrong Answer")
