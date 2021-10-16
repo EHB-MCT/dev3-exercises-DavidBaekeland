@@ -48,7 +48,7 @@ fun challengeThree() {
     val answer = readLine().toString()
 
     if(answer == "chairs") {
-        success()
+        challengeFour()
     } else if(answer == "milkshake") {
         challengeTwo()
     } else if(answer ==  "coffee"){
@@ -56,6 +56,15 @@ fun challengeThree() {
     }
 
 }
+
+// https://stackoverflow.com/questions/59700269/why-is-required-when-converting-the-readline-string-value-into-int
+fun challengeFour() {
+    val awards = 64
+    print("How many awards did Friends won?  ")
+    var answer = readLine()!!.toInt()
+}
+
+
 
 fun gameOver() {
     println("Wrong Answer")
