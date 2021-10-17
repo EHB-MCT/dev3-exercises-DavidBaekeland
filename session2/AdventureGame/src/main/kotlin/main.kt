@@ -61,7 +61,7 @@ fun challengeThree() {
 fun challengeFour() {
     val awards = 64
     print("How many awards did Friends won?  ")
-    var answer = readLine()!!.toInt()
+    val answer = readLine()!!.toInt()
     validate(awards, answer)
 }
 
@@ -73,7 +73,32 @@ fun validate(awards:Int, answer:Int) {
         println("It is lower")
         challengeFour()
     } else {
+        challengeFive()
+    }
+}
+
+fun challengeFive() {
+    val anagrams = listOf("camion", "Manhattan","qdsfsd")
+
+    print(anagrams[0] + " ")
+    val answer = readLine()
+
+    if (answer == "Monica") {
         success()
+    }  else {
+        print(anagrams[1] + " ")
+        val answer2 = readLine()
+        if (answer2 == "Manhattan") {
+            success()
+        }  else {
+            print(anagrams[2] + " ")
+            val answer3 = readLine()
+            if (answer3 == "qdsfsd") {
+                success()
+            }  else {
+                gameOver()
+            }
+        }
     }
 }
 
