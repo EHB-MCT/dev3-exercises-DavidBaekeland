@@ -80,18 +80,21 @@ fun validate(awards:Int, answer:Int) {
 fun challengeFive() {
     val anagrams = listOf("camion", "Manhattan","qdsfsd")
 
-    print(anagrams[0] + " ")
-    val answer = readLine()
+    print("Can you give me the solution of this anagram? " + anagrams[0] + " ")
+    var answer = readLine().toString()
+    answer = answer.capitalize()
 
     if (answer == "Monica") {
         success()
     }  else {
-        print(anagrams[1] + " ")
+        gameOver()
+        print("Can you give me the solution of this anagram? " + anagrams[1] + " ")
         val answer2 = readLine()
         if (answer2 == "Manhattan") {
             success()
         }  else {
-            print(anagrams[2] + " ")
+            gameOver()
+            print("Can you give me the solution of this anagram?" + anagrams[2] + " ")
             val answer3 = readLine()
             if (answer3 == "qdsfsd") {
                 success()
