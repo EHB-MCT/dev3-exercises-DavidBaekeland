@@ -89,20 +89,22 @@ fun challengeFive() {
     }  else {
         gameOver()
         print("Can you give me the solution of this anagram? " + anagrams[1] + " ")
-        val answer2 = readLine()
-        if (answer2 == "Manhattan") {
+        answer = readLine().toString()
+        answer = answer.capitalize()
+        if (answer == "Manhattan") {
             success()
         }  else {
             gameOver()
-            print("Can you give me the solution of this anagram?" + anagrams[2] + " ")
-            val answer3 = readLine()
-            if (answer3 == "qdsfsd") {
+            print("Can you give me the solution of this anagram? " + anagrams[2] + " ")
+            answer = readLine().toString()
+            if (answer == "qdsfsd") {
                 success()
             }  else {
                 gameOver()
             }
         }
     }
+
 }
 
 fun gameOver() {
