@@ -3,11 +3,11 @@
 // private: alleen person zelf
 // protected: wel teacher, student, Comedian -> niet main
 open class Person(open val name: String): ChatPartner {
-    fun introduce() {
+    override fun introduce() {
         println("Hello I am ${name}")
     }
 
-    open fun talk() {
+    override fun talk() {
 
     }
 }
