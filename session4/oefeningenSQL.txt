@@ -1,0 +1,31 @@
+CREATE TABLE `2122DEV3004`.`trains` ( `id` INT(11) NOT NULL AUTO_INCREMENT , 
+`type` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `max_speed` INT(11) NOT NULL , 
+`max_passengers` INT(11) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `2122DEV3004`.`rides` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `train` INT NOT NULL , `departure_time` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `rides` ADD `departure_city` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `departure_time`, ADD `destination_city` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `departure_city`;
+
+CREATE TABLE `2122DEV3004`.`cities` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(225) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `2122DEV3004`.`passengers` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `trains_id` INT(11) NOT NULL , `rides_id` INT(11) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `passengers` ADD `name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `id`;
+
+CREATE TABLE `2122DEV3004`.`passenger_ride` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `rides_id` INT(11) NOT NULL , `passengers_id` INT(11) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `passenger_ride` ADD FOREIGN KEY (`passengers_id`) REFERENCES `passengers`(`id`) ON DELETE RESTRICT ON UPDATE NO ACTION;
+
+ALTER TABLE `passenger_ride` ADD FOREIGN KEY (`rides_id`) REFERENCES `rides`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+ALTER TABLE `rides` CHANGE `departure_city` `departure_city` INT(11) UNSIGNED NOT NULL;
+
+ALTER TABLE `rides` CHANGE `destination_city` `destination_city` INT(11) UNSIGNED NOT NULL;
+
+ALTER TABLE `cities` CHANGE `id` `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `rides` ADD FOREIGN KEY (`departure_city`) REFERENCES `cities`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+ALTER TABLE `rides` DROP FOREIGN KEY `rides_ibfk_2`; ALTER TABLE `rides` ADD CONSTRAINT `rides_ibfk_2` FOREIGN KEY (`departure_city`) REFERENCES `cities`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION; ALTER TABLE `rides` DROP FOREIGN KEY `rides_ibfk_3`; ALTER TABLE `rides` ADD CONSTRAINT `rides_ibfk_3` FOREIGN KEY (`destination_city`) REFERENCES `cities`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `rides` ADD FOREIGN KEY (`destination_city`) REFERENCES `cities`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
