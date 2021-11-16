@@ -18,3 +18,19 @@
 
 5) SELECT count(*) FROM products WHERE productLine = "Ships"
    9
+
+6) SELECT count(customers.customerNumber) FROM customers
+   122
+
+7) SELECT COUNT(*) FROM orders
+   RIGHT JOIN customers on orders.customerNumber = customers.customerNumber WHERE customers.contactFirstName = "Julie" and customers.contactLastName = "Young"
+   3
+
+8) SELECT COUNT(*) FROM customers WHERE customers.country = "USA" AND customers.creditLimit = 0.00
+   1
+
+9) SELECT customers.customerName, AVG(amount) as average FROM customers
+   INNER JOIN payments on customers.customerNumber = payments.customerNumber
+   GROUP BY customers.customerNumber
+   ORDER BY average DESC LIMIT 1
+   Collectable Mini Designs Co.	80375.240000
