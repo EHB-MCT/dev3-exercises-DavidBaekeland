@@ -34,3 +34,24 @@
    GROUP BY customers.customerNumber
    ORDER BY average DESC LIMIT 1
    Collectable Mini Designs Co.	80375.240000
+
+10) SELECT customers.contactFirstName, customers.contactLastName, SUM(payments.amount) as amount FROM customers
+    inner JOIN payments on customers.customerNumber = payments.customerNumber
+    WHERE customers.contactFirstName = "William" and customers.contactLastName = "Brown" AND payments.paymentDate>="2004-01-O1" AND payments.paymentDate<="2004-12-31"
+    William	Brown	38281.51
+
+11) SELECT customers.customerName, employees.employeeNumber FROM customers INNER JOIN employees on employees.employeeNumber  =  customers.salesRepEmployeeNumber GROUP BY employees.employeeNumber
+    Mini Gifts Distributors Ltd.	1165
+    Signal Gift Stores	                1166
+    Cambridge Collectables Co.	        1188
+    Diecast Classics Inc.	        1216
+    Muscle Machine Inc	                1286
+    Land of Toys Inc.	                1323
+    Saveley & Henriot, Co.	1337
+    Atelier graphique	1370
+    Danish Wholesale Imports	1401
+    Toys of Finland, Co.	1501
+    Baane Mini Imports	1504
+    Australian Collectors, Co.	1611
+    Handji Gifts& Co	1612
+    Dragon Souveniers, Ltd.	1621
