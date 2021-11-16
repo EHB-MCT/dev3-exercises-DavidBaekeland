@@ -1,0 +1,20 @@
+1) SELECT productName FROM products WHERE products.productCode = "S24_3856"
+   1956 Porsche 356A Coupe
+
+2) SELECT AVG(buyPrice) FROM products
+   54.395182
+
+3) SELECT COUNT(*) FROM products WHERE productName LIKE "%Ford%"
+   15
+
+4) SELECT productName, MAX(buyPrice) FROM products => productname is fout
+   1969 Harley Davidson Ultimate Chopper	103.42
+
+   https://www.w3schools.com/sql/sql_top.asp
+
+   SELECT productName, buyPrice FROM products order by buyPrice DESC LIMIT 1
+   1962 LanciaA Delta 16V	103.42
+   
+
+5) SELECT count(*) FROM products WHERE productLine = "Ships"
+   9
