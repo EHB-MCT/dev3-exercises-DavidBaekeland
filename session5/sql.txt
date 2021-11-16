@@ -1,0 +1,57 @@
+1) SELECT productName FROM products WHERE products.productCode = "S24_3856"
+   1956 Porsche 356A Coupe
+
+2) SELECT AVG(buyPrice) FROM products
+   54.395182
+
+3) SELECT COUNT(*) FROM products WHERE productName LIKE "%Ford%"
+   15
+
+4) SELECT productName, MAX(buyPrice) FROM products => productname is fout
+   1969 Harley Davidson Ultimate Chopper	103.42
+
+   https://www.w3schools.com/sql/sql_top.asp
+
+   SELECT productName, buyPrice FROM products order by buyPrice DESC LIMIT 1
+   1962 LanciaA Delta 16V	103.42
+   
+
+5) SELECT count(*) FROM products WHERE productLine = "Ships"
+   9
+
+6) SELECT count(customers.customerNumber) FROM customers
+   122
+
+7) SELECT COUNT(*) FROM orders
+   RIGHT JOIN customers on orders.customerNumber = customers.customerNumber WHERE customers.contactFirstName = "Julie" and customers.contactLastName = "Young"
+   3
+
+8) SELECT COUNT(*) FROM customers WHERE customers.country = "USA" AND customers.creditLimit = 0.00
+   1
+
+9) SELECT customers.customerName, AVG(amount) as average FROM customers
+   INNER JOIN payments on customers.customerNumber = payments.customerNumber
+   GROUP BY customers.customerNumber
+   ORDER BY average DESC LIMIT 1
+   Collectable Mini Designs Co.	80375.240000
+
+10) SELECT customers.contactFirstName, customers.contactLastName, SUM(payments.amount) as amount FROM customers
+    inner JOIN payments on customers.customerNumber = payments.customerNumber
+    WHERE customers.contactFirstName = "William" and customers.contactLastName = "Brown" AND payments.paymentDate>="2004-01-O1" AND payments.paymentDate<="2004-12-31"
+    William	Brown	38281.51
+
+11) SELECT customers.customerName, employees.employeeNumber FROM customers INNER JOIN employees on employees.employeeNumber  =  customers.salesRepEmployeeNumber GROUP BY employees.employeeNumber
+    Mini Gifts Distributors Ltd.	1165
+    Signal Gift Stores	                1166
+    Cambridge Collectables Co.	        1188
+    Diecast Classics Inc.	        1216
+    Muscle Machine Inc	                1286
+    Land of Toys Inc.	                1323
+    Saveley & Henriot, Co.	1337
+    Atelier graphique	1370
+    Danish Wholesale Imports	1401
+    Toys of Finland, Co.	1501
+    Baane Mini Imports	1504
+    Australian Collectors, Co.	1611
+    Handji Gifts& Co	1612
+    Dragon Souveniers, Ltd.	1621
