@@ -22,13 +22,15 @@ fun main() {
                 credential.databaseName,
         connectionProps)
 
-    val statement = connection.prepareStatement("SELECT * FROM orders")
+    val statement = connection.prepareStatement("SELECT * FROM rides")
     val result =  statement.executeQuery()
 
 
     while(result.next()) {
-        val stringResult = result.getString("status")
-        println(stringResult)
+        val stringResult = result.getString("id")
+        val trainId = result.getString("train_id")
+        print(stringResult + " ")
+        println(trainId)
     }
 
 
