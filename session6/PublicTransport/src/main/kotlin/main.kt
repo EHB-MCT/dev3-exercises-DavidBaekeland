@@ -32,8 +32,20 @@ fun main() {
         print(stringResult + " ")
         println(trainId)
     }
+    ask(connection)
+}
 
+fun ask(connection: Connection) {
+    print("Which city do you like to go? ")
+    var answer = readLine()
+    
+    val statement2 = connection.prepareStatement("SELECT * FROM rides WHERE id = ?")
+    statement2.setString(1, answer)
+    val result2 =  statement2.executeQuery()
 
-
-
+    while(result2.next()) {
+        val stringResult = result2.getString("id")
+        println(stringResult)
+    }
+    println(answer)
 }
