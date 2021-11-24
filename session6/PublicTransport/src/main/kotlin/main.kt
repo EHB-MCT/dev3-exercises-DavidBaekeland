@@ -35,10 +35,12 @@ fun main() {
     ask(connection)
 }
 
+// connection: Connection -> Connection: type -> String, int
 fun ask(connection: Connection) {
     print("Which city do you like to go? ")
     var answer = readLine()
-    
+
+    // ? -> geen verkeerde query doorsturen -> bv data verloren
     val statement2 = connection.prepareStatement("SELECT * FROM rides WHERE id = ?")
     statement2.setString(1, answer)
     val result2 =  statement2.executeQuery()
