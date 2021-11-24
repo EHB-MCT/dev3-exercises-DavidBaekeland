@@ -35,19 +35,45 @@ fun main() {
     ask(connection)
 }
 
+// connection: Connection -> Connection: type -> String, int
 fun ask(connection: Connection) {
     print("Which city do you like to go? ")
     var answer = readLine()
 
     // ? -> geen verkeerde query doorsturen -> bv data verloren
-    val statement = connection.prepareStatement("SELECT MIN(rides.departure_time) FROM rides INNER JOIN cities on rides.destination_city = cities.id WHERE cities.name = ?")
+    val statement = connection.prepareStatement("SELECT id FROM cities WHERE name = ?")
     statement.setString(1, answer)
     val result =  statement.executeQuery()
 
     while(result.next()) {
-        val stringResult = result.getString("MIN(rides.departure_time)")
+        val stringResult = result.getString("id")
         println(stringResult)
+
+        val statement2 = connection.prepareStatement("SELECT MIN(rides.departure_time) FROM rides WHERE destination_city = ${stringResult}")
+        val result2 =  statement2.executeQuery()
+
+
+        while(result2.next()) {
+            val stringResult2 = result2.getString("MIN(rides.departure_time)")
+            println(stringResult2)
+        }
+        println(answer)
     }
-
-
 }
+
+//fun ask(connection: Connection) {
+    //print("Which city do you like to go? ")
+    //var answer = readLine()
+
+    // ? -> geen verkeerde query doorsturen -> bv data verloren
+    //val statement = connection.prepareStatement("SELECT MIN(rides.departure_time) FROM rides INNER JOIN cities on rides.destination_city = cities.id WHERE cities.name = ?")
+    //statement.setString(1, answer)
+    //val result =  statement.executeQuery()
+
+    //while(result.next()) {
+        //val stringResult = result.getString("MIN(rides.departure_time)")
+        //println(stringResult)
+    //}
+
+
+//}
