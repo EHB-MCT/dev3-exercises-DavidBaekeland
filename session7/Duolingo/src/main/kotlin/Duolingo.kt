@@ -1,4 +1,4 @@
-class Duolingo {
+class Duolingo(val size: Int = 5, val language: String="fr") {
     init  {
         val word1 = Word("Hello", "hallo", "eng")
         val word2 = Word("Bonjour", "hallo", "fr")
@@ -13,14 +13,18 @@ class Duolingo {
         val words = mutableListOf<Word>(word1, word2, word3, word4, word5, word6, word7, word8, word9, word10)
 
 
-        play(words)
+        println(size)
+        print(language)
+
+        val filter = words.filter { it.language == language }
+        // filter.forEach { println(it.original) }
+        play2(filter)
 
     }
 
-
     // https://kotlinlang.org/docs/collections-overview.html#collection
-    fun play(words: List<Word>)  {
-        val randomWords = words.shuffled().take(5).toMutableSet()
+        fun play2(words: List<Word>)  {
+        val randomWords = words.shuffled().take(size).toMutableSet()
         //.shuffled = > zodat we niet elke keer 5 dezelfde hebben
         // .take() => aantal items
         // .toMutableSet => zodat een item kan worden weggehaald
