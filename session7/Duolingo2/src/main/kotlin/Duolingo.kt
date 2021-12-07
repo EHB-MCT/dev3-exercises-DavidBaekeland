@@ -1,4 +1,16 @@
 class Duolingo(val size: Int = 5, val language: String="eng") {
+    var words = mutableSetOf<Word>(
+        EnglishWord("Hello", "hallo"),
+        FrenchWord("Bonjour", "hallo"),
+        EnglishWord("language", "taal"),
+        FrenchWord("langue", "taal"),
+        FrenchWord("glace", "ijs"),
+        EnglishWord("contact", "contact"),
+        EnglishWord("water", "water"),
+        FrenchWord("l'eau", "water"),
+        FrenchWord("navigateur", "browser"),
+        EnglishWord("form", "formulier")
+    )
     // magic functie => automatich
     init  {
         //val word1 = Word("Hello", "hallo", "eng")
@@ -25,29 +37,18 @@ class Duolingo(val size: Int = 5, val language: String="eng") {
         //  val word10 = EnglishWord("form", "formulier")
         //var words = mutableSetOf<Word2>(word1, word2, word3, word4, word5, word6, word7, word8, word9, word10)
 
-        var words = mutableSetOf<Word2>(
-            EnglishWord("Hello", "hallo"),
-            FrenchWord("Bonjour", "hallo"),
-            EnglishWord("language", "taal"),
-            FrenchWord("langue", "taal"),
-            FrenchWord("glace", "ijs"),
-            EnglishWord("contact", "contact"),
-            EnglishWord("water", "water"),
-            FrenchWord("l'eau", "water"),
-            FrenchWord("navigateur", "browser"),
-            EnglishWord("form", "formulier")
-        )
 
-        val filter = words.filter { it.language == language }
+
+        words = words.filter { it.language == language }.toMutableSet()
         // filter.forEach { println(it.original) }
 
         //words = words.filter { it.language == language }.toMutableSet()
-        play2(filter)
+
 
     }
 
     // https://kotlinlang.org/docs/collections-overview.html#collection
-    fun play2(words: List<Word2>)  {
+    fun play2()  {
         val randomWords = words.shuffled().take(size).toMutableSet()
         //.shuffled = > zodat we niet elke keer 5 dezelfde hebben
         // .take() => aantal items
